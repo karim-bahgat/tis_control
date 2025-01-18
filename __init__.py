@@ -41,6 +41,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: TISConfigEntry) -> bool:
     """Set up TISControl from a config entry."""
     try:
         run(["git","pull"]) #pull update
+        logging.warning(f"Updated TIS Integrations")
     except Exception as e:
         logging.error(f"Could Not Update TIS Integration: {e}")
         
