@@ -1,5 +1,5 @@
 """The TISControl integration."""
-#test7
+#test8
 
 from __future__ import annotations
 
@@ -7,7 +7,7 @@ import asyncio
 import json
 import logging
 import uuid
-from subprocess import run
+import os
 
 import aiofiles
 from aiohttp import web
@@ -40,7 +40,10 @@ class TISData:
 async def async_setup_entry(hass: HomeAssistant, entry: TISConfigEntry) -> bool:
     """Set up TISControl from a config entry."""
     try:
-        run(["git","pull"]) #pull update
+        current_directory = os.getcwd()
+        os.chdir('/config/custom_components/tis_control')
+        os.system('git pull')
+        os.chdir(current_directory)
         logging.warning(f"Updated TIS Integrations")
     except Exception as e:
         logging.error(f"Could Not Update TIS Integration: {e}")
