@@ -1,5 +1,5 @@
 """The TISControl integration."""
-#test10
+#test11
 
 from __future__ import annotations
 
@@ -45,7 +45,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: TISConfigEntry) -> bool:
         os.system('git reset --hard HEAD')
         os.system('git pull')
         os.chdir(current_directory)
-        logging.warning(f"Updated TIS Integrations")
+        logging.warning(f"Updated TIS Integrations.")
     except Exception as e:
         logging.error(f"Could Not Update TIS Integration: {e}")
         
