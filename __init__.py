@@ -58,7 +58,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: TISConfigEntry) -> bool:
         hass=hass,
         domain=DOMAIN,
         devices_dict=DEVICES_DICT,
-        display_logo="./custom_components/tis_control/logo.png",
+        display_logo="./custom_components/tis_control/images/logo.png",
     )
     entry.runtime_data = TISData(api=tis_api)
 
