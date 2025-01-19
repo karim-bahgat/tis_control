@@ -42,10 +42,14 @@ async def async_setup_entry(hass: HomeAssistant, entry: TISConfigEntry) -> bool:
     try:
         current_directory = os.getcwd()
         os.chdir('/config/custom_components/tis_control')
-        os.system('git reset --hard HEAD')
-        os.system('git pull')
+        reset = os.system('git reset --hard HEAD')
+        pull = os.system('git pull')
         os.chdir(current_directory)
-        logging.warning(f"Updated TIS Integrations.")
+        if pull == 0 and reset == 0: 
+            logging.warning(f"Updated TIS Integrations")
+        else:
+            logging.error(f"Could Not Update TIS Integration: exit error {pull}")
+
     except Exception as e:
         logging.error(f"Could Not Update TIS Integration: {e}")
         
